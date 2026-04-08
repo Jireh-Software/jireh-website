@@ -8,8 +8,14 @@ export default function Home() {
 
   const whatsappLink = `https://wa.me/5535991913953?text=Olá,%20vim%20pelo%20site%20da%20Jireh%20Software`;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(form),
+    });
+
     setSubmitted(true);
   };
 
