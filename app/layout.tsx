@@ -1,6 +1,8 @@
+import "./globals.css";
+
 export const metadata = {
   title: "Jireh Software",
-  description: "Desenvolvimento de software e consultoria"
+  description: "Desenvolvimento de software, consultoria e ensino de programação"
 };
 
 export default function RootLayout({
