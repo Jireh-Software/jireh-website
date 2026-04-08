@@ -1,0 +1,13 @@
+<!-- favicon.svg -->
+<svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M76.25 0.25H24.25C10.9952 0.25 0.25 10.9952 0.25 24.25V76.25C0.25 89.5048 10.9952 100.25 24.25 100.25H76.25C89.5048 100.25 100.25 89.5048 100.25 76.25V24.25C100.25 10.9952 89.5048 0.25 76.25 0.25Z" fill="#05080F" stroke="#1A2540" stroke-width="0.5"/>
+<path d="M63.25 24.25H37.25C30.0703 24.25 24.25 30.0703 24.25 37.25V63.25C24.25 70.4297 30.0703 76.25 37.25 76.25H63.25C70.4297 76.25 76.25 70.4297 76.25 63.25V37.25C76.25 30.0703 70.4297 24.25 63.25 24.25Z" fill="url(#paint0_linear)"/>
+<path opacity="0.9" d="M50.25 34.25V52.25L62.25 58.25V42.25L50.25 34.25Z" fill="#05080F"/>
+<path opacity="0.7" d="M38.25 42.25V58.25L50.25 52.25V68.25L62.25 62.25V46.25L50.25 52.25V36.25L38.25 42.25Z" fill="#05080F"/>
+<defs>
+<linearGradient id="paint0_linear" x1="24.25" y1="24.25" x2="76.25" y2="76.25" gradientUnits="userSpaceOnUse">
+<stop stop-color="#22c55e"/>
+<stop offset="1" stop-color="#3b82f6"/>
+</linearGradient>
+</defs>
+</svg>
