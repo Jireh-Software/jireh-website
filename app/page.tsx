@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -38,12 +37,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="font-bold text-lg">Jireh<span className="text-green-400">.</span>Software</h1>
           <nav className="hidden md:flex gap-8 text-sm text-gray-400">
-            <button onClick={() => scrollTo("services")}>Serviços</button>
-            <button onClick={() => scrollTo("process")}>Processo</button>
-            <button onClick={() => scrollTo("about")}>Sobre</button>
+            <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("services")}>Serviços</button>
+            <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("process")}>Processo</button>
+            <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("about")}>Sobre</button>
           </nav>
           <a href="#contact">
-            <Button className="bg-green-400 text-black rounded-full px-6">Fale conosco</Button>
+            <button className="bg-green-400 text-black rounded-full px-6">Fale conosco</button>
           </a>
         </div>
       </header>
@@ -69,9 +68,9 @@ export default function Home() {
 
             <div className="flex gap-4 mb-10">
               <a href={whatsappLink} target="_blank">
-                <Button className="bg-green-400 text-black rounded-full px-6">WhatsApp</Button>
+                <button className="bg-green-400 text-black rounded-full px-6">WhatsApp</button>
               </a>
-              <Button variant="outline" onClick={() => scrollTo("contact")}>Fale com a equipe</Button>
+              <button className="bg-green-400 text-black px-6 py-2 rounded-full" variant="outline" onClick={() => scrollTo("contact")}>Fale com a equipe</button>
             </div>
 
             <div className="flex gap-10 text-sm">
@@ -255,7 +254,7 @@ export default function Home() {
                 <input className="bg-white/5 p-3 rounded" placeholder="Nome" onChange={(e) => setForm({ ...form, name: e.target.value })} />
                 <input className="bg-white/5 p-3 rounded" placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 <textarea className="bg-white/5 p-3 rounded" placeholder="Mensagem" onChange={(e) => setForm({ ...form, message: e.target.value })} />
-                <Button type="submit" className="bg-green-400 text-black">Enviar</Button>
+                <button className="bg-green-400 text-black px-6 py-2 rounded-full" type="submit">Enviar</button>
               </form>
             )}
           </div>
@@ -265,9 +264,9 @@ export default function Home() {
         <footer className="py-10 px-6 border-t border-white/10 text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} Jireh Software</p>
           <div className="flex gap-4">
-            <button onClick={() => scrollTo("services")}>Serviços</button>
-            <button onClick={() => scrollTo("process")}>Processo</button>
-            <button onClick={() => scrollTo("about")}>Sobre</button>
+            <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("services")}>Serviços</button>
+            <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("process")}>Processo</button>
+            <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("about")}>Sobre</button>
           </div>
         </footer>
 
