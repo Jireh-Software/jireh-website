@@ -70,7 +70,7 @@ export default function Home() {
               <a href={whatsappLink} target="_blank">
                 <button className="bg-green-400 text-black rounded-full px-6">WhatsApp</button>
               </a>
-              <button className="bg-green-400 text-black px-6 py-2 rounded-full" variant="outline" onClick={() => scrollTo("contact")}>Fale com a equipe</button>
+              <button className="bg-green-400 text-black px-6 py-2 rounded-full" onClick={() => scrollTo("contact")}>Fale com a equipe</button>
             </div>
 
             <div className="flex gap-10 text-sm">
