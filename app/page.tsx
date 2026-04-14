@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Search, ClipboardList, Code2, Rocket } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Home() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const whatsappLink = `https://wa.me/5535991913953?text=Olá,%20vim%20pelo%20site%20da%20Jireh%20Software`;
+  const whatsappLink = `https://wa.me/5535991913953?text=Olá,%20vim%20pelo%20site%20e%20quero%20um%20orçamento`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,12 +95,17 @@ export default function Home() {
           <div className="max-w-3xl relative z-10">
             <div className="mb-4 text-green-400 text-sm flex items-center gap-2">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              Especialistas em backend
+              Ajudamos empresas a crescer com tecnologia
             </div>
 
             <h1 className="text-5xl font-bold mb-6 leading-tight">
-              Arquitetura e desenvolvimento de sistemas escaláveis
+              Sistemas e soluções sob medida para o seu negócio crescer
             </h1>
+
+            <p className="text-gray-400 mb-6">
+              Automatize processos, reduza retrabalho e ganhe eficiência com
+              tecnologia simples, segura e feita para você.
+            </p>
 
             <p className="text-gray-400 mb-8">
               Desenvolvemos APIs, microservices e sistemas críticos com foco em
@@ -123,10 +130,10 @@ export default function Home() {
               </a>
 
               <button
-                className="bg-green-400 text-black px-6 py-2 rounded-full hover:scale-105 transition"
-                onClick={() => scrollTo("contact")}
+                className="border border-white/20 px-6 py-3 rounded-full hover:border-green-400 hover:text-green-400 transition"
+                onClick={() => scrollTo("services")}
               >
-                Fale com a equipe
+                Ver serviços
               </button>
             </div>
 
@@ -137,302 +144,291 @@ export default function Home() {
                   Anos em experiência de mercado
                 </span>
               </div>
+
+              <div>
+                <p className="text-green-400 text-2xl font-bold">100%</p>
+                <span className="text-gray-400">
+                  foco em soluções sob medida
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
         {/* SERVICES */}
-        <section id="services" className="py-24 px-6 bg-[#0b1120]">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12">Nossos serviços</h2>
+        <section className="py-24 px-6 bg-[#0b1120]">
+          <div className="max-w-6xl mx-auto text-center">
+            {/* HEADER */}
+            <h2 className="text-3xl font-bold mb-4">
+              Como podemos ajudar seu negócio
+            </h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {/* Desenvolvimento */}
-              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:-translate-y-2 transition">
-                <h3 className="font-bold mb-2">Desenvolvimento</h3>
-                <p className="text-gray-400 text-sm">
-                  Criamos APIs, microservices e sistemas escaláveis sob medida,
-                  com foco em performance, segurança e integração.
-                </p>
-              </div>
-
-              {/* Consultoria */}
-              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:-translate-y-2 transition">
-                <h3 className="font-bold mb-2">Consultoria</h3>
-                <p className="text-gray-400 text-sm">
-                  Ajudamos sua empresa a definir arquiteturas eficientes,
-                  melhorar performance e evoluir sistemas com boas práticas e
-                  escalabilidade.
-                </p>
-              </div>
-
-              {/* Ensino */}
-              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:-translate-y-2 transition">
-                <h3 className="font-bold mb-2">Ensino</h3>
-                <p className="text-gray-400 text-sm">
-                  Treinamentos práticos em backend, APIs e arquitetura moderna,
-                  preparando desenvolvedores e indivíduos em transição de
-                  carreira para desafios reais do mercado.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="process" className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">Nosso processo</h2>
             <p className="text-gray-400 mb-12">
-              Processo estruturado para entregar soluções com previsibilidade,
-              qualidade e escalabilidade.
+              Soluções práticas para automatizar processos, integrar sistemas e
+              melhorar a eficiência da sua empresa.
             </p>
 
-            <div className="grid md:grid-cols-4 gap-6">
+            {/* SERVICES */}
+            <div className="grid md:grid-cols-3 gap-6 mb-20">
               {[
                 {
-                  title: "Descoberta",
-                  desc: "Entendemos seu negócio e objetivos para definir a melhor solução.",
+                  title: "Desenvolvimento de sistemas",
+                  desc: "Criamos sistemas sob medida para automatizar processos e aumentar eficiência.",
+                  icon: "💻",
+                  items: [
+                    "Sistemas personalizados",
+                    "Integrações",
+                    "Automação",
+                  ],
                 },
                 {
-                  title: "Planejamento",
-                  desc: "Definimos arquitetura e estratégia com foco em performance.",
+                  title: "Consultoria em tecnologia",
+                  desc: "Ajudamos você a melhorar sistemas existentes e reduzir custos.",
+                  icon: "🧠",
+                  items: [
+                    "Melhoria de sistemas",
+                    "Redução de custos",
+                    "Planejamento",
+                  ],
                 },
                 {
-                  title: "Desenvolvimento",
-                  desc: "Construção com boas práticas, testes e evolução contínua.",
-                },
-                {
-                  title: "Entrega",
-                  desc: "Deploy, validação e acompanhamento em produção.",
+                  title: "Ensino de programação",
+                  desc: "Treinamentos práticos com foco no mercado.",
+                  icon: "🎓",
+                  items: ["Aulas práticas", "Conteúdo atualizado", "Foco real"],
                 },
               ].map((item, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="group bg-white/5 border border-white/10 p-6 rounded-2xl hover:border-green-400/30 hover:-translate-y-2 transition-all duration-300"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.2 }}
+                  viewport={{ once: true }}
+                  className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:-translate-y-2 hover:border-green-400/30 transition-all duration-300 text-left"
                 >
-                  {/* Número */}
-                  <p className="text-green-400 text-2xl font-bold mb-2">
-                    0{i + 1}
-                  </p>
-
-                  {/* Título */}
-                  <p className="font-semibold mb-2">{item.title}</p>
-
-                  {/* Descrição */}
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
-                </div>
+                  <div className="text-green-400 text-2xl mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-gray-400 text-sm mb-4">{item.desc}</p>
+                  <ul className="text-gray-500 text-sm space-y-1">
+                    {item.items.map((li, idx) => (
+                      <li key={idx}>✔ {li}</li>
+                    ))}
+                  </ul>
+                </motion.div>
               ))}
+            </div>
+
+            {/* ANTES VS DEPOIS */}
+            <div className="mb-20">
+              <h3 className="text-2xl font-bold mb-10">
+                O que muda com a solução certa
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-8 text-left">
+                <div className="bg-red-500/5 border border-red-500/20 p-6 rounded-2xl">
+                  <h4 className="text-red-400 font-bold mb-4">❌ Antes</h4>
+                  <ul className="text-gray-400 space-y-2 text-sm">
+                    <li>Processos manuais e repetitivos</li>
+                    <li>Erros frequentes</li>
+                    <li>Perda de tempo</li>
+                    <li>Sistemas não integrados</li>
+                  </ul>
+                </div>
+
+                <div className="bg-green-500/5 border border-green-500/20 p-6 rounded-2xl">
+                  <h4 className="text-green-400 font-bold mb-4">✅ Depois</h4>
+                  <ul className="text-gray-400 space-y-2 text-sm">
+                    <li>Processos automatizados</li>
+                    <li>Mais controle e precisão</li>
+                    <li>Ganho de tempo</li>
+                    <li>Sistemas integrados</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* EXEMPLOS */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold mb-10">Exemplos de soluções</h3>
+
+              <div className="grid md:grid-cols-3 gap-6 text-left">
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                  <h4 className="font-bold mb-2">
+                    Sistema de controle interno
+                  </h4>
+                  <p className="text-gray-400 text-sm">
+                    Automação de processos operacionais, reduzindo tarefas
+                    manuais e erros.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                  <h4 className="font-bold mb-2">Integração de plataformas</h4>
+                  <p className="text-gray-400 text-sm">
+                    Conexão entre sistemas para centralizar dados e melhorar a
+                    gestão.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                  <h4 className="font-bold mb-2">Automação de tarefas</h4>
+                  <p className="text-gray-400 text-sm">
+                    Redução de retrabalho com automações inteligentes e
+                    eficientes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA FINAL */}
+            <div>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-400 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
+              >
+                Falar sobre meu projeto
+              </a>
             </div>
           </div>
         </section>
 
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">
+              Você precisa disso se...
+            </h2>
+
+            <div className="text-gray-300 space-y-3">
+              <p>✔ Usa planilhas e quer automatizar processos</p>
+              <p>✔ Tem retrabalho manual no dia a dia</p>
+              <p>✔ Precisa integrar sistemas ou plataformas</p>
+              <p>✔ Quer escalar seu negócio com tecnologia</p>
+            </div>
+          </div>
+        </section>
+
+        <ProcessSection whatsappLink={whatsappLink} />
+
         {/* ABOUT */}
-        <section id="about" className="py-24 px-6 bg-[#0b1120]">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12">Stack & Expertise</h2>
+        <section id="about" className="py-24 px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            {/* TEXTO */}
+            <div>
+              <h2 className="text-3xl font-bold mb-4">
+                Sobre a Jireh Software
+              </h2>
 
-            {/* CATEGORIAS */}
-            <div className="grid md:grid-cols-2 gap-10">
-              {/* BACKEND */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-green-400">
-                  Backend
-                </h3>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {[
-                    {
-                      name: "Java",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-                    },
-                    {
-                      name: "Spring",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
-                    },
-                    {
-                      name: "Quarkus",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/quarkus/quarkus-original.svg",
-                    },
-                    {
-                      name: "Node.js",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-                    },
-                    {
-                      name: "Kafka",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
-                    },
-                  ].map((tech, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,229,176,0.3)] hover:border-green-400/30"
-                    >
-                      <img
-                        src={tech.icon}
-                        className="w-5 h-5 transition duration-300 grayscale hover:grayscale-0 hover:scale-110"
-                      />
-                      <span className="text-sm">{tech.name}</span>
-                    </div>
-                  ))}
-                </div>
+              <p className="text-gray-400 mb-6">
+                A Jireh Software nasceu com o propósito de ajudar empresas a
+                crescer por meio da tecnologia, de forma simples, eficiente e
+                acessível.
+              </p>
 
-                {[
-                  { n: "Java", v: 90 },
-                  { n: "Spring", v: 88 },
-                  { n: "Quarkus", v: 85 },
-                ].map((s, i) => (
-                  <div key={i} className="mb-3">
-                    <div className="flex justify-between text-xs">
-                      <span>{s.n}</span>
-                      <span>{s.v}%</span>
-                    </div>
-                    <div className="bg-white/10 h-2 rounded">
-                      <div
-                        className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded"
-                        style={{ width: `${s.v}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+              <p className="text-gray-400 mb-6">
+                Mais do que desenvolver sistemas, buscamos entender a realidade
+                de cada cliente e construir soluções que realmente façam sentido
+                para o seu negócio.
+              </p>
+
+              {/* STORYTELLING */}
+              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Acreditamos que tecnologia não deve ser complicada nem
+                  distante. Por isso, nosso trabalho é baseado em valores que
+                  vão além do código:
+                  <span className="text-green-400"> transparência</span>,
+                  <span className="text-green-400"> responsabilidade</span> e
+                  <span className="text-green-400">
+                    {" "}
+                    compromisso com resultados reais
+                  </span>
+                  .
+                  <br />
+                  <br />
+                  Nosso objetivo é construir relações de confiança, ajudando
+                  cada cliente a crescer com soluções que realmente funcionam no
+                  dia a dia.
+                </p>
+
+                {/* FRASE PESSOAL */}
+                <p className="mt-6 text-green-400 italic text-sm border-l-2 border-green-400 pl-4">
+                  “Tecnologia com propósito, feita por pessoas para pessoas.”
+                </p>
               </div>
 
-              {/* FRONTEND */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-blue-400">
-                  Frontend
-                </h3>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {[
-                    {
-                      name: "Angular",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
-                    },
-                  ].map((tech, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,229,176,0.3)] hover:border-green-400/30"
-                    >
-                      <img
-                        src={tech.icon}
-                        className="w-5 h-5 transition duration-300 grayscale hover:grayscale-0 hover:scale-110"
-                      />
-                      <span className="text-sm">{tech.name}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {[{ n: "Angular", v: 78 }].map((s, i) => (
-                  <div key={i} className="mb-3">
-                    <div className="flex justify-between text-xs">
-                      <span>{s.n}</span>
-                      <span>{s.v}%</span>
-                    </div>
-                    <div className="bg-white/10 h-2 rounded">
-                      <div
-                        className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded"
-                        style={{ width: `${s.v}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+              {/* DIFERENCIAIS */}
+              <div className="space-y-3 text-sm text-gray-300 mb-8">
+                <p>✔ Atendimento próximo e direto</p>
+                <p>✔ Soluções personalizadas para cada cliente</p>
+                <p>✔ Experiência com sistemas reais</p>
+                <p>✔ Foco em resultado, não só em tecnologia</p>
               </div>
 
-              {/* DATA */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-purple-400">
-                  Dados
-                </h3>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {[
-                    {
-                      name: "SQL",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-                    },
-                    {
-                      name: "NoSQL",
-                      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-                    },
-                  ].map((tech, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,229,176,0.3)] hover:border-green-400/30"
-                    >
-                      <img
-                        src={tech.icon}
-                        className="w-5 h-5 transition duration-300 grayscale hover:grayscale-0 hover:scale-110"
-                      />
-                      <span className="text-sm">{tech.name}</span>
-                    </div>
-                  ))}
-                </div>
+              {/* CTA */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-400 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
+              >
+                Falar sobre meu projeto
+              </a>
+            </div>
 
-                {[
-                  { n: "SQL", v: 85 },
-                  { n: "NoSQL", v: 80 },
-                ].map((s, i) => (
-                  <div key={i} className="mb-3">
-                    <div className="flex justify-between text-xs">
-                      <span>{s.n}</span>
-                      <span>{s.v}%</span>
-                    </div>
-                    <div className="bg-white/10 h-2 rounded">
-                      <div
-                        className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded"
-                        style={{ width: `${s.v}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+            {/* LADO VISUAL */}
+            <div className="space-y-6">
+              {/* PERFIL */}
+              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-center gap-4">
+                <img
+                  src="/perfil.png"
+                  alt="Gabriel Martins"
+                  className="w-16 h-16 rounded-full object-cover border border-white/10"
+                />
+
+                <div>
+                  <p className="font-semibold">Gabriel Martins</p>
+                  <p className="text-gray-400 text-sm">
+                    Fundador • Jireh Software
+                  </p>
+
+                  <a
+                    href="https://www.linkedin.com/in/gabriel-martins-68a235a8/"
+                    target="_blank"
+                    className="text-green-400 text-sm hover:underline"
+                  >
+                    Ver perfil no LinkedIn →
+                  </a>
+                </div>
               </div>
 
-              {/* INFRA */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-cyan-400">
-                  Infra & Arquitetura
-                </h3>
-                <div className="flex flex-wrap gap-3 mb-6">
+              {/* STACK */}
+              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                <h3 className="font-semibold mb-4">Tecnologias utilizadas</h3>
+
+                <div className="flex flex-wrap gap-2 text-sm">
                   {[
-                    {
-                      name: "Microservices",
-                      icon: "https://cdn-icons-png.flaticon.com/512/906/906324.png",
-                    },
-                    {
-                      name: "APIs",
-                      icon: "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
-                    },
-                    {
-                      name: "Mensageria",
-                      icon: "https://cdn-icons-png.flaticon.com/512/1041/1041916.png",
-                    },
+                    "Spring",
+                    "Node.js",
+                    "Angular",
+                    "SQL",
+                    "NoSQL",
+                    "Java",
+                    "Quarkus",
+                    "Kafka",
+                    "React",
                   ].map((tech, i) => (
-                    <div
+                    <span
                       key={i}
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,229,176,0.3)] hover:border-green-400/30"
+                      className="px-3 py-1 rounded-full bg-green-400/10 text-green-400 border border-green-400/20"
                     >
-                      <img
-                        src={tech.icon}
-                        className="w-5 h-5 transition duration-300 grayscale hover:grayscale-0 hover:scale-110"
-                      />
-                      <span className="text-sm">{tech.name}</span>
-                    </div>
+                      {tech}
+                    </span>
                   ))}
                 </div>
-
-                {[
-                  { n: "Microservices", v: 90 },
-                  { n: "APIs", v: 90 },
-                ].map((s, i) => (
-                  <div key={i} className="mb-3">
-                    <div className="flex justify-between text-xs">
-                      <span>{s.n}</span>
-                      <span>{s.v}%</span>
-                    </div>
-                    <div className="bg-white/10 h-2 rounded">
-                      <div
-                        className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded"
-                        style={{ width: `${s.v}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -440,60 +436,96 @@ export default function Home() {
 
         {/* CONTACT */}
         <section id="contact" className="py-24 px-6 bg-[#111827]">
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Vamos conversar sobre seu projeto
-            </h2>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            {/* TEXTO */}
+            <div>
+              <h2 className="text-3xl font-bold mb-4">
+                Vamos tirar sua ideia do papel?
+              </h2>
 
-            <p className="text-gray-400 mb-8">
-              Tem uma ideia, precisa evoluir um sistema ou melhorar a
-              performance da sua aplicação? Estamos prontos para ajudar você a
-              construir soluções escaláveis e eficientes.
-            </p>
-
-            <p className="text-gray-500 mb-10 text-sm">
-              Preencha o formulário ou fale diretamente pelo WhatsApp.
-              Respondemos o mais rápido possível.
-            </p>
-
-            {submitted ? (
-              <p className="text-green-400">
-                Mensagem enviada! Em breve entraremos em contato.
+              <p className="text-gray-400 mb-6">
+                Se você precisa automatizar processos, melhorar um sistema ou
+                começar um projeto do zero, podemos te ajudar.
               </p>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-4 text-left"
+
+              <p className="text-gray-400 mb-6">
+                Fale com a gente e vamos entender sua necessidade — sem
+                compromisso.
+              </p>
+
+              {/* BENEFÍCIOS */}
+              <div className="space-y-3 text-sm text-gray-300 mb-8">
+                <p>✔ Atendimento rápido</p>
+                <p>✔ Soluções sob medida</p>
+                <p>✔ Linguagem simples, sem complicação</p>
+                <p>✔ Foco em resultado real</p>
+              </div>
+
+              {/* CTA WHATSAPP */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-green-400 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
               >
-                <input
-                  className="bg-white/5 p-3 rounded outline-none focus:ring-2 focus:ring-green-400"
-                  placeholder="Seu nome"
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                />
-
-                <input
-                  className="bg-white/5 p-3 rounded outline-none focus:ring-2 focus:ring-green-400"
-                  placeholder="Seu email"
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                />
-
-                <textarea
-                  className="bg-white/5 p-3 rounded outline-none focus:ring-2 focus:ring-green-400"
-                  placeholder="Descreva seu projeto ou necessidade"
-                  rows={4}
-                  onChange={(e) =>
-                    setForm({ ...form, message: e.target.value })
-                  }
-                />
-
-                <button
-                  className="bg-green-400 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
-                  type="submit"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  className="w-6 h-6 fill-white"
                 >
-                  Solicitar contato
-                </button>
-              </form>
-            )}
+                  <path d="M16 .4C7.3.4.4 7.3.4 16c0 2.8.7 5.5 2.1 7.9L.4 31.6l7.9-2.1c2.3 1.3 5 2 7.7 2 8.7 0 15.6-6.9 15.6-15.6S24.7.4 16 .4zm0 28.4c-2.4 0-4.8-.7-6.8-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.3-2-2-4.4-2-6.8 0-7.1 5.8-12.9 12.9-12.9S28.9 8.9 28.9 16 23.1 28.8 16 28.8zm7.3-9.6c-.4-.2-2.3-1.1-2.7-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.3-2.2-2.7-.2-.4 0-.6.1-.8.1-.1.4-.4.6-.6.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.3.4-1.4 1.3-1.4 3.2s1.5 3.7 1.7 3.9c.2.2 3 4.6 7.4 6.4 1 .4 1.8.6 2.4.8 1 .3 1.9.2 2.6.1.8-.1 2.3-1 2.6-1.9.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5z" />
+                </svg>
+                Falar direto no WhatsApp
+              </a>
+            </div>
+
+            {/* FORM */}
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+              <h3 className="font-semibold mb-4">Ou envie uma mensagem</h3>
+
+              {submitted ? (
+                <p className="text-green-400">
+                  Mensagem enviada! Em breve entraremos em contato.
+                </p>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <input
+                    className="bg-white/5 p-3 rounded outline-none focus:ring-2 focus:ring-green-400"
+                    placeholder="Seu nome"
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  />
+
+                  <input
+                    className="bg-white/5 p-3 rounded outline-none focus:ring-2 focus:ring-green-400"
+                    placeholder="Seu email"
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
+                  />
+
+                  <textarea
+                    className="bg-white/5 p-3 rounded outline-none focus:ring-2 focus:ring-green-400"
+                    placeholder="Descreva seu projeto ou necessidade"
+                    rows={4}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
+                  />
+
+                  <button
+                    className="bg-green-400 text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
+                    type="submit"
+                  >
+                    Solicitar contato
+                  </button>
+                </form>
+              )}
+
+              {/* GARANTIA */}
+              <p className="text-xs text-gray-500 mt-4">
+                Sem compromisso — vamos entender seu problema e te orientar.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -538,5 +570,123 @@ export default function Home() {
         </a>
       </main>
     </div>
+  );
+}
+
+function ProcessSection({ whatsappLink }) {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "end center"],
+  });
+
+  const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const steps = [
+    {
+      title: "Entendimento",
+      desc: "Conversamos para entender seu problema e objetivo.",
+      icon: <Search size={20} />,
+    },
+    {
+      title: "Planejamento",
+      desc: "Definimos a melhor solução e estrutura do projeto.",
+      icon: <ClipboardList size={20} />,
+    },
+    {
+      title: "Desenvolvimento",
+      desc: "Construção com acompanhamento e melhorias contínuas.",
+      icon: <Code2 size={20} />,
+    },
+    {
+      title: "Entrega",
+      desc: "Implementação e validação completa da solução.",
+      icon: <Rocket size={20} />,
+    },
+  ];
+
+  return (
+    <section ref={ref} id="process" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-4">
+          Como funciona nosso trabalho
+        </h2>
+
+        <p className="text-gray-400 mb-16">
+          Um processo simples e transparente para revolucionar sua ideia em uma
+          solução real.
+        </p>
+
+        <div className="relative">
+          {/* linha base */}
+          <div className="hidden md:block absolute top-10 left-0 right-0 h-[2px] bg-white/10"></div>
+
+          {/* linha animada */}
+          <motion.div
+            style={{ width: lineWidth }}
+            className="hidden md:block absolute top-10 left-0 h-[2px] bg-green-400"
+          />
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {steps.map((item, i) => {
+              const progress = useTransform(
+                scrollYProgress,
+                [i * 0.2, i * 0.2 + 0.2],
+                [0, 1],
+              );
+
+              const scale = useTransform(progress, [0, 1], [0.8, 1]);
+              const opacity = useTransform(progress, [0, 1], [0.4, 1]);
+
+              return (
+                <motion.div
+                  key={i}
+                  style={{ scale, opacity }}
+                  className="relative text-center"
+                >
+                  {/* ícone */}
+                  <motion.div
+                    style={{
+                      backgroundColor: useTransform(
+                        progress,
+                        [0, 1],
+                        ["#05080f", "#00e5b0"],
+                      ),
+                      color: useTransform(
+                        progress,
+                        [0, 1],
+                        ["#9ca3af", "#000"],
+                      ),
+                    }}
+                    className="mx-auto mb-4 w-12 h-12 flex items-center justify-center rounded-full border border-white/10"
+                  >
+                    {item.icon}
+                  </motion.div>
+
+                  {/* card */}
+                  <motion.div
+                    style={{
+                      borderColor: useTransform(
+                        progress,
+                        [0, 1],
+                        ["rgba(255,255,255,0.1)", "rgba(34,197,94,0.4)"],
+                      ),
+                    }}
+                    className="bg-white/5 border p-6 rounded-2xl"
+                  >
+                    <p className="text-green-400 font-bold mb-2">0{i + 1}</p>
+
+                    <h3 className="font-semibold mb-2">{item.title}</h3>
+
+                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
