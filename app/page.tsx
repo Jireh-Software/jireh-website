@@ -1,6 +1,18 @@
 "use client";
 
-import { Search, ClipboardList, Code2, Rocket } from "lucide-react";
+import {
+  Search,
+  ClipboardList,
+  Code2,
+  Rocket,
+  Phone,
+  Mail,
+  MapPin,
+  Globe,
+  Camera,
+  LifeBuoy,
+} from "lucide-react";
+
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -156,7 +168,7 @@ export default function Home() {
         </section>
 
         {/* SERVICES */}
-        <section className="py-24 px-6 bg-[#0b1120]">
+        <section id="services" className="py-24 px-6 bg-[#0b1120]">
           <div className="max-w-6xl mx-auto text-center">
             {/* HEADER */}
             <h2 className="text-3xl font-bold mb-4">
@@ -242,8 +254,8 @@ export default function Home() {
                   <ul className="text-gray-400 space-y-2 text-sm">
                     <li>Processos automatizados</li>
                     <li>Mais controle e precisão</li>
-                    <li>Ganho de tempo</li>
-                    <li>Sistemas integrados</li>
+                    <li>Maior eficiência da empresa</li>
+                    <li>Visão global do negócio</li>
                   </ul>
                 </div>
               </div>
@@ -530,27 +542,119 @@ export default function Home() {
         </section>
 
         {/* FOOTER */}
-        <footer className="py-10 px-6 border-t border-white/10 text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© {new Date().getFullYear()} Jireh Software</p>
-          <div className="flex gap-4">
-            <button
-              className="bg-green-400 text-black px-6 py-2 rounded-full"
-              onClick={() => scrollTo("services")}
-            >
-              Serviços
-            </button>
-            <button
-              className="bg-green-400 text-black px-6 py-2 rounded-full"
-              onClick={() => scrollTo("process")}
-            >
-              Processo
-            </button>
-            <button
-              className="bg-green-400 text-black px-6 py-2 rounded-full"
-              onClick={() => scrollTo("about")}
-            >
-              Sobre
-            </button>
+        <footer className="bg-[#05080f] border-t border-white/10 py-12 px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10 text-sm">
+            {/* MARCA */}
+            <div>
+              <h3 className="text-lg font-bold mb-3">Jireh Software</h3>
+
+              <p className="text-gray-400 mb-4">
+                Soluções tecnológicas sob medida para ajudar empresas a crescer
+                com eficiência e simplicidade.
+              </p>
+
+              <p className="text-gray-500 italic text-xs">
+                “Tecnologia com propósito, feita para pessoas.”
+              </p>
+            </div>
+
+            {/* NAVEGAÇÃO */}
+            <div>
+              <h4 className="font-semibold mb-3">Navegação</h4>
+
+              <ul className="space-y-2 text-gray-400">
+                {[
+                  { label: "Serviços", href: "#services" },
+                  { label: "Processo", href: "#process" },
+                  { label: "Sobre", href: "#about" },
+                  { label: "Contato", href: "#contact" },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href={item.href}
+                      className="hover:text-green-400 transition"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CONTATO */}
+            <div>
+              <h4 className="font-semibold mb-3">Contato</h4>
+
+              <ul className="space-y-3 text-gray-400">
+                {/* ITEM COM ANIMAÇÃO */}
+                {[
+                  {
+                    icon: <Phone size={16} />,
+                    label: "WhatsApp",
+                    href: whatsappLink,
+                  },
+                  {
+                    icon: <Mail size={16} />,
+                    label: "contato@jirehsoftware.com.br",
+                    href: "mailto:contato@jirehsoftware.com.br",
+                  },
+                  {
+                    icon: <Globe size={16} />,
+                    label: "LinkedIn",
+                    href: "https://www.linkedin.com/in/gabriel-martins-68a235a8/",
+                  },
+                  {
+                    icon: <Camera size={16} />,
+                    label: "Instagram",
+                    href: "https://instagram.com/jireh.software",
+                  },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <motion.a
+                      href={item.href}
+                      target="_blank"
+                      whileHover={{ scale: 1.05 }}
+                      className="group flex items-center gap-2 transition"
+                    >
+                      <span className="text-gray-400 group-hover:text-green-400 transition duration-300 group-hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.8)]">
+                        {item.icon}
+                      </span>
+
+                      <span className="group-hover:text-green-400 transition duration-300">
+                        {item.label}
+                      </span>
+                    </motion.a>
+                  </li>
+                ))}
+
+                {/* LOCAL (sem link) */}
+                <li className="flex items-center gap-2 text-gray-400">
+                  <MapPin size={16} />
+                  Santa Rita do Sapucaí - MG
+                </li>
+              </ul>
+            </div>
+
+            {/* INFO */}
+            <div>
+              <h4 className="font-semibold mb-3">Informações</h4>
+
+              <ul className="space-y-2 text-gray-400">
+                <li>Atendimento sob demanda</li>
+                <li>Soluções personalizadas</li>
+                <li>Projetos sob orçamento</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* LINHA FINAL */}
+          <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 text-center text-xs text-gray-500 space-y-1">
+            <p>
+              © {new Date().getFullYear()} Jireh Software. Todos os direitos
+              reservados.
+            </p>
+
+            <p>Jireh Software ME • CNPJ: 43.286.490/0001-47</p>
           </div>
         </footer>
 
@@ -581,6 +685,7 @@ function ProcessSection({ whatsappLink }) {
     offset: ["start center", "end center"],
   });
 
+  // linha crescendo
   const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const steps = [
@@ -604,87 +709,97 @@ function ProcessSection({ whatsappLink }) {
       desc: "Implementação e validação completa da solução.",
       icon: <Rocket size={20} />,
     },
+    {
+      title: "Acompanhamento contínuo",
+      desc: "Mesmo após a entrega, acompanhamos o uso da solução e oferecemos suporte para garantir desempenho e evolução contínua.",
+      icon: <LifeBuoy size={20} />,
+    },
   ];
 
   return (
-    <section ref={ref} id="process" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-4">
-          Como funciona nosso trabalho
-        </h2>
+    <section ref={ref} className="py-24 px-6 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* LINHA BASE */}
+        <div className="hidden lg:block absolute top-10 left-0 w-full h-[2px] bg-white/10" />
 
-        <p className="text-gray-400 mb-16">
-          Um processo simples e transparente para revolucionar sua ideia em uma
-          solução real.
-        </p>
+        {/* LINHA ANIMADA */}
+        <motion.div
+          style={{ width: lineWidth }}
+          className="hidden lg:block absolute top-10 left-0 h-[2px] bg-gradient-to-r from-green-400 to-blue-500"
+        />
 
-        <div className="relative">
-          {/* linha base */}
-          <div className="hidden md:block absolute top-10 left-0 right-0 h-[2px] bg-white/10"></div>
+        {/* STEPS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+          {steps.map((item, i) => {
+            const start = i / steps.length;
+            const end = start + 1 / steps.length;
 
-          {/* linha animada */}
-          <motion.div
-            style={{ width: lineWidth }}
-            className="hidden md:block absolute top-10 left-0 h-[2px] bg-green-400"
-          />
+            const progress = useTransform(
+              scrollYProgress,
+              [start, end],
+              [0, 1],
+            );
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {steps.map((item, i) => {
-              const progress = useTransform(
-                scrollYProgress,
-                [i * 0.2, i * 0.2 + 0.2],
-                [0, 1],
-              );
+            const scale = useTransform(progress, [0, 1], [0.85, 1]);
+            const opacity = useTransform(progress, [0, 1], [0.3, 1]);
 
-              const scale = useTransform(progress, [0, 1], [0.8, 1]);
-              const opacity = useTransform(progress, [0, 1], [0.4, 1]);
+            const isActive = useTransform(progress, (v) => v > 0.5);
 
-              return (
+            return (
+              <motion.div
+                key={i}
+                style={{ scale, opacity }}
+                className="flex flex-col items-center text-center relative"
+              >
+                {/* ÍCONE */}
                 <motion.div
-                  key={i}
-                  style={{ scale, opacity }}
-                  className="relative text-center"
+                  style={{
+                    backgroundColor: useTransform(
+                      progress,
+                      [0, 1],
+                      ["#05080f", "#00e5b0"],
+                    ),
+                    color: useTransform(progress, [0, 1], ["#9ca3af", "#000"]),
+                    boxShadow: useTransform(
+                      progress,
+                      [0, 1],
+                      ["0 0 0px rgba(0,0,0,0)", "0 0 20px rgba(34,197,94,0.7)"],
+                    ),
+                  }}
+                  className="z-10 mb-6 w-14 h-14 flex items-center justify-center rounded-full border border-white/10 transition-all"
                 >
-                  {/* ícone */}
-                  <motion.div
-                    style={{
-                      backgroundColor: useTransform(
-                        progress,
-                        [0, 1],
-                        ["#05080f", "#00e5b0"],
-                      ),
-                      color: useTransform(
-                        progress,
-                        [0, 1],
-                        ["#9ca3af", "#000"],
-                      ),
-                    }}
-                    className="mx-auto mb-4 w-12 h-12 flex items-center justify-center rounded-full border border-white/10"
-                  >
-                    {item.icon}
-                  </motion.div>
-
-                  {/* card */}
-                  <motion.div
-                    style={{
-                      borderColor: useTransform(
-                        progress,
-                        [0, 1],
-                        ["rgba(255,255,255,0.1)", "rgba(34,197,94,0.4)"],
-                      ),
-                    }}
-                    className="bg-white/5 border p-6 rounded-2xl"
-                  >
-                    <p className="text-green-400 font-bold mb-2">0{i + 1}</p>
-
-                    <h3 className="font-semibold mb-2">{item.title}</h3>
-
-                    <p className="text-gray-400 text-sm">{item.desc}</p>
-                  </motion.div>
+                  {item.icon}
                 </motion.div>
-              );
-            })}
-          </div>
+
+                {/* CARD */}
+                <motion.div
+                  style={{
+                    borderColor: useTransform(
+                      progress,
+                      [0, 1],
+                      ["rgba(255,255,255,0.1)", "rgba(34,197,94,0.6)"],
+                    ),
+                    boxShadow: useTransform(
+                      progress,
+                      [0, 1],
+                      ["0 0 0px rgba(0,0,0,0)", "0 10px 30px rgba(0,0,0,0.4)"],
+                    ),
+                  }}
+                  className="bg-white/5 backdrop-blur-md border p-6 rounded-2xl w-full transition-all"
+                >
+                  <p className="text-green-400 font-bold mb-2 text-sm">
+                    0{i + 1}
+                  </p>
+
+                  <h3 className="font-semibold mb-2 text-base">{item.title}</h3>
+
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
