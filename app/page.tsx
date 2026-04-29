@@ -25,12 +25,24 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-    setSubmitted(true);
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("ERRO RESEND:", err);
+      return Response.json({ err });
+    }
   };
 
   const scrollTo = (id) => {
