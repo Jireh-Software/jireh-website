@@ -337,6 +337,109 @@ export default function Home() {
 
         <ProcessSection whatsappLink={whatsappLink} />
 
+        {/* SOLUTIONS */}
+        <section id="solutions" className="py-24 px-6 bg-[#05080f]">
+          <div className="max-w-6xl mx-auto">
+            {/* HEADER */}
+            <div className="text-center mb-16">
+              <p className="text-green-400 text-sm mb-3 tracking-widest">
+                NOSSAS SOLUÇÕES
+              </p>
+
+              <h2 className="text-4xl font-bold mb-6">
+                Plataformas desenvolvidas pela Jireh Software
+              </h2>
+
+              <p className="text-gray-400 max-w-3xl mx-auto">
+                Além de soluções sob medida, também desenvolvemos plataformas
+                próprias para automatizar operações, centralizar processos e
+                acelerar o crescimento de empresas.
+              </p>
+            </div>
+
+            {/* SOLUTION CARDS */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* JIREH FLOW */}
+              <div
+                onClick={() =>
+                  window.open("https://flow.jirehsoftware.com.br", "_blank")
+                }
+                className="group cursor-pointer relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 via-[#0b1120] to-[#05080f] p-8 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2"
+              >
+                {/* GLOW */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_40%)]" />
+
+                <div className="relative z-10">
+                  {/* BADGE */}
+                  <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm mb-6">
+                    SaaS • Plataforma Web
+                  </div>
+
+                  {/* TITLE */}
+                  <h3 className="text-3xl font-bold mb-4">Jireh.Flow</h3>
+
+                  {/* DESCRIPTION */}
+                  <p className="text-gray-400 leading-relaxed mb-8">
+                    Plataforma moderna para gestão operacional, automação de processos, controle de clientes, agendamento, cobranças, notificações eintegrações.
+                  </p>
+
+                  {/* FEATURES */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    {[
+                      "Automação",
+                      "Dashboard",
+                      "Integrações",
+                      "Agendamentos",
+                      "Cobranças on-line",
+                      "Gestão de clientes",
+                    ].map((item, i) => (
+                      <div
+                        key={i}
+                        className="bg-white/5 border border-white/10 rounded-2xl p-4 text-sm text-gray-300"
+                      >
+                        ✔ {item}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-cyan-400 font-semibold">
+                      Acessar plataforma
+                    </span>
+
+                    <div className="w-12 h-12 rounded-full bg-cyan-400 text-black flex items-center justify-center group-hover:translate-x-1 transition">
+                      →
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* FUTURAS SOLUÇÕES */}
+              <div className="rounded-3xl border border-dashed border-white/10 bg-white/[0.02] p-8 flex flex-col justify-center">
+                <div className="mb-6">
+                  <p className="text-gray-500 text-sm mb-3">EM BREVE</p>
+
+                  <h3 className="text-2xl font-bold mb-4">
+                    Novas soluções estão sendo desenvolvidas
+                  </h3>
+
+                  <p className="text-gray-400 leading-relaxed">
+                    Estamos constantemente criando novas plataformas e ferramentas para ajudar empresas a automatizar operações e crescer com tecnologia.
+                  </p>
+                </div>
+
+                <div className="space-y-3 text-gray-500 text-sm">
+                  <p>• Sistemas SaaS</p>
+                  <p>• Plataformas de automação</p>
+                  <p>• Ferramentas empresariais</p>
+                  <p>• Soluções integradas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ABOUT */}
         <section id="about" className="py-24 px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
