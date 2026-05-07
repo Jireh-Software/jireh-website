@@ -99,6 +99,14 @@ export default function Home() {
               Fale conosco
             </button>
           </a>
+          <a href="#solutions">
+            <button
+              className="bg-green-400 text-black px-6 py-2 rounded-full"
+              onClick={() => scrollTo("solutions")}
+            >
+              Soluções
+            </button>
+          </a>
         </div>
       </header>
 
@@ -380,7 +388,9 @@ export default function Home() {
 
                   {/* DESCRIPTION */}
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    Plataforma moderna para gestão operacional, automação de processos, controle de clientes, agendamento, cobranças, notificações eintegrações.
+                    Plataforma moderna para gestão operacional, automação de
+                    processos, controle de clientes, agendamento, cobranças,
+                    notificações eintegrações.
                   </p>
 
                   {/* FEATURES */}
@@ -425,7 +435,9 @@ export default function Home() {
                   </h3>
 
                   <p className="text-gray-400 leading-relaxed">
-                    Estamos constantemente criando novas plataformas e ferramentas para ajudar empresas a automatizar operações e crescer com tecnologia.
+                    Estamos constantemente criando novas plataformas e
+                    ferramentas para ajudar empresas a automatizar operações e
+                    crescer com tecnologia.
                   </p>
                 </div>
 
@@ -683,6 +695,7 @@ export default function Home() {
                   { label: "Processo", href: "#process" },
                   { label: "Sobre", href: "#about" },
                   { label: "Contato", href: "#contact" },
+                  { label: "Soluções", href: "#solutions" },
                 ].map((item, i) => (
                   <li key={i}>
                     <a
