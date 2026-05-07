@@ -90,6 +90,12 @@ export default function Home() {
             >
               Sobre
             </button>
+            <button
+              className="bg-green-400 text-black px-6 py-2 rounded-full"
+              onClick={() => scrollTo("solutions")}
+            >
+              Soluções
+            </button>
           </nav>
           <a href="#contact">
             <button
@@ -97,14 +103,6 @@ export default function Home() {
               onClick={() => scrollTo("contact")}
             >
               Fale conosco
-            </button>
-          </a>
-          <a href="#solutions">
-            <button
-              className="bg-green-400 text-black px-6 py-2 rounded-full"
-              onClick={() => scrollTo("solutions")}
-            >
-              Soluções
             </button>
           </a>
         </div>
