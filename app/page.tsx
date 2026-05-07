@@ -388,7 +388,7 @@ export default function Home() {
                   <p className="text-gray-400 leading-relaxed mb-8">
                     Plataforma moderna para gestão operacional, automação de
                     processos, controle de clientes, agendamento, cobranças,
-                    notificações eintegrações.
+                    notificações e integrações.
                   </p>
 
                   {/* FEATURES */}
